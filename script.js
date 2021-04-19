@@ -1,4 +1,5 @@
 const debugMode = false;
+const cacheEnabled = true;
 
 const log = debugMode ? console.log : () => {};
 
@@ -6,7 +7,7 @@ function fib(n, prevValues = {}, level = 0) {
   const dashes = "-".repeat(level);
   log(`${dashes}> [${n}]: called`);
 
-  if (prevValues[n]) {
+  if (cacheEnabled && prevValues[n]) {
     const prevResult = prevValues[n];
     log(`${dashes}> [${n}] = ${prevResult} hit`);
     return prevResult;
@@ -27,4 +28,4 @@ function fib(n, prevValues = {}, level = 0) {
   }
 }
 
-console.log(fib(42));
+console.log(fib(100));
